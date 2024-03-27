@@ -8,9 +8,11 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         h1 {
             color: #333;
         }
+
         form {
             display: flex;
             flex-direction: column;
@@ -20,17 +22,21 @@
             border-radius: 5px;
             background-color: #f9f9f9;
         }
+
         div {
             padding: 1rem 0 0.5rem 0;
         }
+
         label {
             font-weight: bold;
-            
+
         }
+
         input[type="radio"], input[type="checkbox"] {
             margin-right: 5px;
             cursor: pointer;
         }
+
         input[type="submit"] {
             margin-top: 10px;
             padding: 5px 10px;
@@ -39,20 +45,46 @@
             background-color: #f3f3f3;
             cursor: pointer;
         }
+
         input[type="submit"]:hover {
             background-color: #e9e9e9;
         }
+
         p {
             margin-top: 20px;
         }
-        .red { color: red; }
-        .green { color: green; }
-        .blue { color: blue; }
-        .small { font-size: 12px; }
-        .medium { font-size: 18px; }
-        .large { font-size: 25px; }
-        .bold { font-weight: bold; }
-        .italic { font-style: italic; }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .small {
+            font-size: 12px;
+        }
+
+        .medium {
+            font-size: 18px;
+        }
+
+        .large {
+            font-size: 25px;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -60,7 +92,6 @@
 <h1>Lorem ipsum generator</h1>
 
 <?php
-// Process form data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $color = $_POST['color'];
     $size = $_POST['size'];
