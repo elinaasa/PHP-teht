@@ -22,36 +22,24 @@
             border-radius: 5px;
             background-color: #f9f9f9;
         }
+        p {
+            margin-top: 20px;
 
-        div {
-            padding: 1rem 0 0.5rem 0;
         }
 
         label {
-            font-weight: bold;
-
-        }
-
-        input[type="radio"], input[type="checkbox"] {
-            margin-right: 5px;
             cursor: pointer;
         }
 
         input[type="submit"] {
-            margin-top: 10px;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f3f3f3;
+            margin: 1rem 0;
+            font-weight: bold;
+            padding: 1rem;
             cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #e9e9e9;
-        }
-
-        p {
-            margin-top: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
         }
 
         .red {
@@ -77,7 +65,7 @@
         .large {
             font-size: 25px;
         }
-        
+
         .bold {
             font-weight: bold;
         }
@@ -115,24 +103,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <form method="post">
     <div>
-        <label>Color:</label><br>
-        <input type="radio" name="color" value="red"> Red<br>
-        <input type="radio" name="color" value="green"> Green<br>
-        <input type="radio" name="color" value="blue"> Blue<br>
-    </div>
-    <div>
-        <label>Size:</label><br>
-        <select name="size">
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-        </select><br>
-    </div>
-    <div>
-        <label>Font style:</label><br>
-        <input type="checkbox" name="font_styles[]" value="bold"> Bold<br>
-        <input type="checkbox" name="font_styles[]" value="italic"> Italic<br>
-    </div>
+        <div>
+            <h2>Color:</h2>
+            <label><input type="radio" name="color" value="red"> Red</label><br>
+            <label><input type="radio" name="color" value="green"> Green</label><br>
+            <label><input type="radio" name="color" value="blue"> Blue</label><br>
+        </div>
+        <div>
+            <h2>Size:</h2>
+            <select name="size">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select><br>
+        </div>
+        <div>
+            <h2>Font styles:</h2>
+            <label><input type="checkbox" name="font_styles[]" value="bold"> Bold</label><br>
+            <label><input type="checkbox" name="font_styles[]" value="italic"> Italic</label><br>
+        </div>
     <div>
         <input type="submit" value="Generate Lorem Ipsum">
     </div>
