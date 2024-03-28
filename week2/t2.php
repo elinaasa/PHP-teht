@@ -3,8 +3,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     print_r($_POST);
     if (isset($_POST['remember-me'])) {
         setcookie('username', $_POST['username'], time() + 60 * 60 * 24 * 30);
+        header('Location: ' . $_SERVER['PHP_SELF']);
     } else {
         setcookie('username', '', time() - 3600);
+        header('Location: ' . $_SERVER['PHP_SELF']);
     }
 }
 ?>
