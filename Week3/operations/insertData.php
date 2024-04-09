@@ -20,10 +20,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $filesize = $_FILES['file']['size'];
         $temp_file = $_FILES['file']['tmp_name'];
         $destination = __DIR__ . '/../uploads/' . $filename;
-        if (!move_uploaded_file($temp_file, $destination)) {
-            header('Location: ../home.php?success=File upload failed');
+
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/quicktime'];
+        if (!in_array($filetype, $allowedTypes)) {
+            header('Location: ../home.php?success=Invalid file type');
             exit;
         }
+        // check file size
+        $max_size = 1024 * 1024; // 1MB
+
+        if ($filesize > $max_size) {
+            echo "File too large";
+            exit;
+        }
+        // double check that file does not contain php
+        if (str_contains($filename, '.php')) {
+            echo "Invalid file name";
+            exit;
+        }
+        if (move_uploaded_file($temp_file, $destination)) {
+            echo "File uploaded successfully";
+        } else {
+            echo "Error uploading file";
+        }
+
 
         $data = [
             'user_id' => $_SESSION['user']['user_id'],
@@ -34,9 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'filesize' => $filesize,
         ];
 
-
         if ($mediaItemDbOps->insertMediaItem($data)) {
             header('Location: ../home.php?success=Item added');
+
         } else {
             header('Location: ../home.php?success=Item not added');
         }
